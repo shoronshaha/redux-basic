@@ -2,6 +2,24 @@ const counterEl = document.getElementById("counter");
 const incrementEl = document.getElementById("increment");
 const decrementEl = document.getElementById("decrement");
 
+//action identifiers
+const INCREMENT = "increment";
+const DECREMENT = "decrement";
+
+// action creators
+const increment = (value) => {
+  return {
+    type: INCREMENT,
+    payload: value,
+  };
+};
+const decrement = (value) => {
+  return {
+    type: DECREMENT,
+    payload: value,
+  };
+};
+
 const initialState = {
   value: 0,
 };
@@ -38,14 +56,8 @@ store.subscribe(render);
 
 // Button click listeners
 incrementEl.addEventListener("click", () => {
-  store.dispatch({
-    type: "increment",
-    payload: 3,
-  });
+  store.dispatch(increment(3));
 });
 decrementEl.addEventListener("click", () => {
-  store.dispatch({
-    type: "decrement",
-    payload: 2,
-  });
+  store.dispatch(decrement(2));
 });
